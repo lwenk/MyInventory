@@ -89,7 +89,7 @@ mc.listen("onLeft", player => {
         if (item.isNull()) return
         const data: itemData = {
             name,
-            icon: `./images/${isBlock ? "block" : "item"}/${type}.png`,
+            icon: `./images/${isBlock ? "block" : "item"}/${type.split("minecraft:")[1]}.png`,
             slot: index,
             count: isStackable ? count : undefined,
             damage: isDamageableItem ? maxDamage - damage : undefined,
@@ -97,7 +97,7 @@ mc.listen("onLeft", player => {
         }
         inventoryData.enderChest.push(data)
     })
-    //这里用的是玩家uuid作为文件名，你也可以用玩家名/xuid作为文件名
+    //这里用的是玩家uuid作为文件名，你也可以用玩家名或xuid作为文件名
     File.writeTo(`${BASE_DATA_PATH}/${player.uuid}.json`, JSON.stringify(inventoryData))
 })
 
@@ -110,6 +110,11 @@ mc.listen("onServerStarted", () => {
     //你可以使用任何web框架来实现以下功能
     server.onGet("/inventory", (req, resp) => {
         const playerName = req.query["name"]
+        if (typeof playerName === "undefined") {
+            resp.status = 400;
+            resp.reason = "Bad Request";
+            return
+        }
         const uuid = data.name2uuid(playerName)
         if (uuid === null) {
             resp.status = 400;
@@ -126,18 +131,20 @@ mc.listen("onServerStarted", () => {
         resp.body = File.readFrom(`${BASE_DATA_PATH}/${uuid}.json`)
         resp.status = 200;
         resp.reason = "OK";
-    }).onGet("/static/(.+)", (req, resp) => {
-        const fileName = req.matches[1]
-        const path = `${STATIC_PATH}/${fileName}`
-        if (File.exists(path)) {
-            resp.body = File.readFrom(path)
-            resp.status = 200;
-            resp.reason = "OK";
-            return
-        }
-        resp.status = 404;
-        resp.reason = "Not Found";
-    }).onGet("/404", (req, resp) => {
+    })
+    // .onGet("/static/(.+)", (req, resp) => {
+    //     const fileName = req.matches[1]
+    //     const path = `${STATIC_PATH}/${fileName}`
+    //     if (File.exists(path)) {
+    //         resp.body = File.readFrom(path)
+    //         resp.status = 200;
+    //         resp.reason = "OK";
+    //         return
+    //     }
+    //     resp.status = 404;
+    //     resp.reason = "Not Found";
+    // })
+    .onGet("/404", (req, resp) => {
         resp.status = 404;
         resp.reason = "Not Found";
     }).onGet("/(.+)", (req, resp) => {
@@ -145,6 +152,7 @@ mc.listen("onServerStarted", () => {
         resp.reason = "Not Found";
     }).onPreRouting((req, resp) => {
         logger.info(`onPreRouting [${req.method}] Path ${req.path}\n`, req.query, req.body)
+        return true
     }).onPostRouting((req, resp) => {
     }).onError((req, resp) => {
     }).onException((req, resp, error) => {
