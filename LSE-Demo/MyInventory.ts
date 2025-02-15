@@ -1,3 +1,6 @@
+// LiteLoader-AIDS automatic generated
+/// <reference path="F:\MC\000_Dev\003_Lib\dts/dts/llaids/src/index.d.ts"/> 
+
 ll.registerPlugin(
     /* name */ "",
     /* introduction */ "",
@@ -61,7 +64,39 @@ function getInventoryData(player: Player) {
 }
 
 mc.listen("onLeft", player => {
-    const inventoryData = getInventoryData(player)
+    const inventory = player.getInventory()
+    const enderChest = player.getEnderChest()
+    const inventoryData: InventoryData = {
+        playerInventory: [],
+        enderChest: []
+    }
+    inventory.getAllItems().forEach((item, index) => {
+        let { count, type, name, isBlock, isStackable, isDamageableItem, damage, maxDamage } = item
+        if (item.isNull()) return
+        const data: itemData = {
+            name,
+            icon: `./images/${isBlock ? "block" : "item"}/${type}.png`,
+            slot: index,
+            count: isStackable ? count : undefined,
+            damage: isDamageableItem ? maxDamage - damage : undefined,
+            maxDamage: isDamageableItem ? maxDamage : undefined
+        }
+        inventoryData.playerInventory.push(data)
+
+    })
+    enderChest.getAllItems().forEach((item, index) => {
+        let { count, type, name, isBlock, isStackable, isDamageableItem, damage, maxDamage } = item
+        if (item.isNull()) return
+        const data: itemData = {
+            name,
+            icon: `./images/${isBlock ? "block" : "item"}/${type}.png`,
+            slot: index,
+            count: isStackable ? count : undefined,
+            damage: isDamageableItem ? maxDamage - damage : undefined,
+            maxDamage: isDamageableItem ? maxDamage : undefined
+        }
+        inventoryData.enderChest.push(data)
+    })
     //这里用的是玩家uuid作为文件名，你也可以用玩家名/xuid作为文件名
     File.writeTo(`${BASE_DATA_PATH}/${player.uuid}.json`, JSON.stringify(inventoryData))
 })
@@ -88,14 +123,14 @@ mc.listen("onServerStarted", () => {
             resp.reason = "OK";
             return
         }
-        resp.body = File.readForm(`${BASE_DATA_PATH}/${uuid}.json`)
+        resp.body = File.readFrom(`${BASE_DATA_PATH}/${uuid}.json`)
         resp.status = 200;
         resp.reason = "OK";
     }).onGet("/static/(.+)", (req, resp) => {
         const fileName = req.matches[1]
         const path = `${STATIC_PATH}/${fileName}`
         if (File.exists(path)) {
-            resp.body = File.readForm(path)
+            resp.body = File.readFrom(path)
             resp.status = 200;
             resp.reason = "OK";
             return
