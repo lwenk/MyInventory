@@ -68,7 +68,13 @@ export function getPlayerInventoryData(id: { name?: string, xuid?: string, uuid?
         const inventoryData = getInventoryData(player)
         return inventoryData
     }
-    return File.readFrom(`${BASE_DATA_PATH}/${uuid}.json`)
+    const fileData = File.readFrom(`${BASE_DATA_PATH}/${uuid}.json`)
+    if(fileData===null) return null
+    try{
+        return JSON.parse(fileData)
+    }catch(err){
+        return null
+    }
 }
 
 
