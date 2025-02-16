@@ -10,7 +10,7 @@ body {
   margin: 0;
 }
 
-.inventory {
+#inventory {
   background-color: #333;
   padding: 20px;
   border-radius: 10px;
@@ -18,15 +18,13 @@ body {
   width: 512px;
 }
 
-.ender-chest,
-.main-inventory,
-.hotbar {
+.container {
   margin-top: 12px;
   margin-bottom: 12px;
 }
 
 h2 {
-  margin: 0 0 10px 0;
+  margin: 10px 0 5px 0;
   font-size: 18px;
   color: #fff;
 }

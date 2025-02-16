@@ -1,0 +1,203 @@
+{
+    "playerInventory": [
+        {
+            "name": "草方块",
+            "count": 64,
+            "slot": 27,
+            "icon": "./images/block/grass_block.png"
+        },
+        {
+            "name": "玩家的头",
+            "count": 11,
+            "slot": 29,
+            "icon": "./images/block/player_head.png"
+        },
+        {
+            "name": "龙首",
+            "count": 45,
+            "slot":30,
+            "icon": "./images/block/dragon_head.png"
+        },
+        {
+            "name": "猪灵的头",
+            "count": 14,
+            "slot": 31,
+            "icon": "./images/block/piglin_head.png"
+        },
+        {
+            "name": "苦力怕的头",
+            "count": 19,
+            "slot": 32,
+            "icon": "./images/block/creeper_head.png"
+        },
+        {
+            "name": "僵尸的头",
+            "count": 19,
+            "slot": 33,
+            "icon": "./images/block/zombie_head.png"
+        },
+        {
+            "name": "骷髅头颅",
+            "count": 8,
+            "slot": 34,
+            "icon": "./images/block/skeleton_skull.png"
+        },
+        {
+            "name": "凋零骷髅头颅",
+            "count": 10,
+            "slot": 35,
+            "icon": "./images/block/wither_skeleton_skull.png"
+        },
+        {
+            "name": "钻石剑",
+            "slot": 0,
+            "icon": "./images/item/diamond_sword.png",
+            "damage": 1000,
+            "maxDamage": 1000
+        },
+
+        {
+            "name": "钻石剑",
+            "slot": 2,
+            "icon": "./images/item/diamond_sword.png",
+            "damage": 900,
+            "maxDamage": 1000
+        },
+        {
+            "name": "钻石剑",
+            "slot": 3,
+            "icon": "./images/item/diamond_sword.png",
+            "damage": 700,
+            "maxDamage": 1000
+        },
+        {
+            "name": "钻石剑",
+            "slot": 4,
+            "icon": "./images/item/diamond_sword.png",
+            "damage": 600,
+            "maxDamage": 1000
+        },
+        {
+            "name": "钻石剑",
+            "slot": 5,
+            "icon": "./images/item/diamond_sword.png",
+            "damage": 500,
+            "maxDamage": 1000
+        },
+        {
+            "name": "钻石剑",
+            "slot": 6,
+            "icon": "./images/item/diamond_sword.png",
+            "damage": 400,
+            "maxDamage": 1000
+        },
+        {
+            "name": "钻石剑",
+            "slot": 7,
+            "icon": "./images/item/diamond_sword.png",
+            "damage": 300,
+            "maxDamage": 1000
+        },
+        {
+            "name": "钻石剑",
+            "slot": 8,
+            "icon": "./images/item/diamond_sword.png",
+            "damage": 100,
+            "maxDamage": 1000
+        },
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 9,
+            "icon": "./images/item/diamond.png"
+        },
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 11,
+            "icon": "./images/item/diamond.png"
+        },
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 13,
+            "icon": "./images/item/diamond.png"
+        },
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 15,
+            "icon": "./images/item/diamond.png"
+        },
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 16,
+            "icon": "./images/item/diamond.png"
+        }
+        ,
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 17,
+            "icon": "./images/item/diamond.png"
+        }
+    ],
+    "enderChest": [
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 10,
+            "icon": "./images/item/diamond.png"
+        },
+        
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 12,
+            "icon": "./images/item/diamond.png"
+        },
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 15,
+            "icon": "./images/item/diamond.png"
+        },
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 16,
+            "icon": "./images/item/diamond.png"
+        },
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 17,
+            "icon": "./images/item/diamond.png"
+        },
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 18,
+            "icon": "./images/item/diamond.png"
+        },
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 20,
+            "icon": "./images/item/diamond.png"
+        },
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 22,
+            "icon": "./images/item/diamond.png"
+        },
+        {
+            "name": "钻石",
+            "count": 1,
+            "slot": 24,
+            "icon": "./images/item/diamond.png"
+        }
+    ]
+}
