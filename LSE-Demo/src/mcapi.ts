@@ -23,7 +23,7 @@ function getItemData(container: LLSE_Container) {
         if (item.isNull()) return
         const idata: ItemData = {
             name,
-            icon: `./images/${isBlock ? "block" : "item"}/${type}.png`,
+            icon: `./images/${isBlock ? "block" : "item"}/${type.split("minecraft:")[1]}.png`,
             slot: index,
             count: isStackable ? count : undefined,
             damage: isDamageableItem ? maxDamage - damage : undefined,
