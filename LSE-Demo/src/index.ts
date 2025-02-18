@@ -10,13 +10,19 @@ ll.registerPlugin(
 
 import { onPlayerLeft } from "./mcapi"
 import { app } from "./app"
+import { Server } from "http";
 
 const LISTEN_PORT = 11451
-
+let server: Server | null = null
 mc.listen("onLeft", onPlayerLeft)
 
 mc.listen("onServerStarted", () => {
-    app.listen(LISTEN_PORT, () => {
+    server = app.listen(LISTEN_PORT, () => {
         logger.info(`背包API服务已启动 http://localhost:${LISTEN_PORT}`)
     })
+})
+
+ll.onUnload(()=>{
+    if(server===null) return
+    server.close()
 })
